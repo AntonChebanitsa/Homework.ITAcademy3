@@ -13,5 +13,7 @@ namespace Homework.ITAcademy3
             Name = name;
             Terminal = terminal;
         }
+
+
     }
 }

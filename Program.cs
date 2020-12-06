@@ -6,14 +6,15 @@ namespace Homework.ITAcademy3
     {
         static void Main(string[] args)
         {
-           Company com= new Company();
+            FileReader fr = new FileReader();
 
-           
+            fr.Reader();
 
-           foreach (var sub in com.Contracts)
-           {
-               Console.WriteLine($"{sub.Name},  {sub.Terminal}");
-           }
+
+            //foreach (var sub in com.Contracts)
+            //{
+            //    Console.WriteLine($"{sub.Name},  {sub.Terminal}");
+            //}
         }
     }
 }
