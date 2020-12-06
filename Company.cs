@@ -12,12 +12,10 @@ namespace Homework.ITAcademy3
         {
             Terminal Ter = new Terminal();
 
-            var sub = new Subscriber("asdasd asdasd", Guid.NewGuid());
+            var sub = new Subscriber("asdasd asdasd", Ter.NumberGuid);
 
             Contracts.Add(sub);
 
-            Console.WriteLine(Ter.PhoneNumber);
         }
-
     }
 }

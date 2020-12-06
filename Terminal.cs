@@ -6,10 +6,10 @@ namespace Homework.ITAcademy3
     {
         public Guid PhoneNumber { get; private set; }
 
-        private readonly Guid _numberGuid= Guid.NewGuid();
+        public Guid NumberGuid= Guid.NewGuid();
         public Terminal()
         {
-            PhoneNumber = _numberGuid;
+            PhoneNumber = NumberGuid;
         }
 
     }

@@ -8,15 +8,11 @@ namespace Homework.ITAcademy3
         {
            Company com= new Company();
 
-           com.ConcludeANewContract();
-           com.ConcludeANewContract();
-           com.ConcludeANewContract();
-           com.ConcludeANewContract();
-           com.ConcludeANewContract();
+           
 
-           foreach (var VARIABLE in com.Contracts)
+           foreach (var sub in com.Contracts)
            {
-               Console.WriteLine(VARIABLE);
+               Console.WriteLine($"{sub.Name},  {sub.Terminal}");
            }
         }
     }
