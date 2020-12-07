@@ -12,7 +12,7 @@ namespace Homework.ITAcademy3
         {
             Terminal Ter = new Terminal();
 
-            var sub = new Subscriber("asdasd asdasd", Ter.NumberGuid);
+            var sub = new Subscriber("asdasd", Ter.NumberGuid, "asdasd");
 
             Contracts.Add(sub);
 

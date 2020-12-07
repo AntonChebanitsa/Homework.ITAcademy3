@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Homework.ITAcademy3.Peoples
 {
-    class Human
+    public class Human
     {
-        private string Name { get; set; }
-        private string Surname { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
 
         public Human(string name, string surname)
         {
