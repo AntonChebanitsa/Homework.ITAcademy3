@@ -29,7 +29,8 @@ namespace Homework.ITAcademy3
             }
             else
             {
-                
+                var connection= new Connection();
+                connection.DurationOfConversation();
             }
         }
 

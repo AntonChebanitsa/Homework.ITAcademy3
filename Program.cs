@@ -1,4 +1,5 @@
 ﻿using System;
+using Homework.ITAcademy3.UI;
 
 namespace Homework.ITAcademy3
 {
@@ -6,10 +7,8 @@ namespace Homework.ITAcademy3
     {
         static void Main(string[] args)
         {
-            FileReader fr = new FileReader();
-
-            fr.Reader();
-
+            var mm= new MainMenu();
+            mm.Start();
 
             //foreach (var sub in com.Contracts)
             //{

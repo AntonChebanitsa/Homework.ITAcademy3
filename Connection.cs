@@ -9,7 +9,7 @@ namespace Homework.ITAcademy3
 
         }
 
-        public int DurationOfConversation()
+        public double DurationOfConversation()
         {
             bool _connectionEstablished = false;
             //waiting to be picked up
@@ -20,12 +20,11 @@ namespace Homework.ITAcademy3
                 //waiting end conversation
                 DateTime conversationEnds = DateTime.Now;
                 TimeSpan durationOfConversation = conversationEnds - conversationStart;
-                int x = (int)durationOfConversation.TotalMinutes;
-                return x;
+                return durationOfConversation.TotalMinutes;
             }
             else
             {
-                
+
                 _connectionEstablished = false;
                 Console.WriteLine("The subscriber is busy, call back later.");
                 return 0;
