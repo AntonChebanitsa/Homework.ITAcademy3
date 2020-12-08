@@ -10,7 +10,7 @@ namespace Homework.ITAcademy3.UI
             Console.WriteLine("Welcome to the main menu");
             Console.WriteLine("Enter the corresponding request number");
             Console.WriteLine("1. Show Contacts\n" +
-                              "2. Check balance\n" +
+                              "2. Check information about account\n" +
                               "3. Display call history\n" +
                               "4. Change tariff plan\n" +
                               "0. Exit the application");
@@ -34,6 +34,8 @@ namespace Homework.ITAcademy3.UI
                     contacts.Reader();
                     break;
                 case 2:
+                    var info= new Information();
+                    info.CheckInformation();
                         break;
                 case 3:
                     break;
