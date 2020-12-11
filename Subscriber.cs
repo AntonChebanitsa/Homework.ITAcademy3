@@ -6,14 +6,12 @@ namespace Homework.ITAcademy3
 {
     public class Subscriber : Human
     {
-        public string FullName { get; set; }
         public Guid Terminal { get; set; }
         public bool IsAvailable { get; private set; } = true;
         public bool IsBusy { get; private set; } = false;
 
         public Subscriber(string name, Guid terminal, string surname) : base(name, surname)
         {
-            FullName = $"{name} {surname}";
             Terminal = terminal;
         }
 

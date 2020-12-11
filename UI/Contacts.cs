@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Homework.ITAcademy3.Peoples;
 using Newtonsoft.Json;
 
@@ -10,8 +11,8 @@ namespace Homework.ITAcademy3.UI
     {
         public List<Human> FileReader()
         {
-            var pathFN = "C:\\Users\\USER\\source\\repos\\Homework.ITAcademy3\\UI\\FirstnamesWO_LINQ.json";
-            var pathLN = "C:\\Users\\USER\\source\\repos\\Homework.ITAcademy3\\UI\\Surnames.json";
+            const string pathFN = "C:\\Users\\USER\\source\\repos\\Homework.ITAcademy3\\UI\\FirstnamesWO_LINQ.json";
+            const string pathLN = "C:\\Users\\USER\\source\\repos\\Homework.ITAcademy3\\UI\\Surnames.json";
 
             var content1 = File.ReadAllText(pathFN);
             var content2 = File.ReadAllText(pathLN);
@@ -28,6 +29,36 @@ namespace Homework.ITAcademy3.UI
                 people.Add(human);
             }
             return people;
+        }
+
+        public void ShowAllContacts()
+        {
+            var sortedUsers = FileReader().OrderBy(u => u.Name);
+            foreach (var i in sortedUsers)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        public void Search()
+        {
+            string keyWord = null;
+            try
+            { 
+                keyWord = Convert.ToString(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("Incorrect input");
+            }
+
+            var searchedUser = FileReader().Select(r => r.FullName).Contains(keyWord);
+            
+            foreach (var user in FileReader())
+            {
+                Console.WriteLine(user.ToString().Contains(keyWord));
+
+            }
         }
     }
 }

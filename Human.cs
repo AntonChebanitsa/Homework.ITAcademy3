@@ -8,11 +8,13 @@ namespace Homework.ITAcademy3.Peoples
     {
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string FullName { get; private set; }
 
         public Human(string name, string surname)
         {
             Name = name;
             Surname = surname;
+            FullName = $"{name} {surname}";
         }
 
         public override string ToString()
