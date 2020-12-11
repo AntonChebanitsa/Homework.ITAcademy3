@@ -44,7 +44,7 @@ namespace Homework.ITAcademy3.UI
         {
             string keyWord = null;
             try
-            { 
+            {
                 keyWord = Convert.ToString(Console.ReadLine());
             }
             catch
@@ -52,13 +52,11 @@ namespace Homework.ITAcademy3.UI
                 Console.WriteLine("Incorrect input");
             }
 
-            var searchedUser = FileReader().Select(r => r.FullName).Contains(keyWord);
-            
-            foreach (var user in FileReader())
-            {
-                Console.WriteLine(user.ToString().Contains(keyWord));
+            var searchedUser = FileReader().Where(r => r.FullName.ToUpper().Contains(keyWord.ToUpper()));
 
-            }
+            foreach (var user in searchedUser)
+                Console.WriteLine(user.FullName);
+
         }
     }
 }
