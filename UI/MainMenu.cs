@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
+using Homework.ITAcademy3.Peoples;
 
 namespace Homework.ITAcademy3.UI
 {
@@ -9,44 +11,53 @@ namespace Homework.ITAcademy3.UI
         {
             Console.WriteLine("Welcome to the main menu");
             Console.WriteLine("Enter the corresponding request number");
-            Console.WriteLine("1. Show Contacts\n" +
-                              "2. Check information about account\n" +
-                              "3. Display call history\n" +
-                              "4. Change tariff plan\n" +
+            Console.WriteLine("1. Show contacts\n" +
+                              "2. Search contact\n" +
+                              //"3. Check Balance" +
+                              "3. Check information about account\n" +
+                              "5. Display call history\n" +
+                            //  "6. Change tariff plan\n" +
                               "0. Exit the application");
 
-            short input=0;
+            short input = 0;
 
             try
             {
-               input= Convert.ToInt16(Console.ReadLine());
+                input = Convert.ToInt16(Console.ReadLine());
             }
-            catch (Exception e)
+            catch
             {
                 Console.WriteLine("Wrong input. Try again");
                 Start();
             }
 
+            var contacts = new Contacts();
+            contacts.FileReader();
+
             switch (input)
             {
                 case 1:
-                    var contacts=new Contacts();
-                    contacts.Reader();
+                    Information contactInfo = new Information();
+                    contactInfo.CheckInformation();
                     break;
                 case 2:
-                    var info= new Information();
-                    info.CheckInformation();
-                        break;
+
+                    break;
                 case 3:
+                    var balanceInfo = new Information();
+                    balanceInfo.CheckInformation();
+                    break;
+                case 4:
                     break;
                 case 0:
                     break;
-                    
+
                 default:
+                    Console.WriteLine("Wrong input. Try again");
+                    Start();
                     break;
-                    
             }
-            
+
         }
     }
 }

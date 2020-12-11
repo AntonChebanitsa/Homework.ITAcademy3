@@ -8,7 +8,7 @@ namespace Homework.ITAcademy3.UI
 {
     public class Contacts
     {
-        public void Reader()
+        public List<Human> FileReader()
         {
             var pathFN = "C:\\Users\\USER\\source\\repos\\Homework.ITAcademy3\\UI\\FirstnamesWO_LINQ.json";
             var pathLN = "C:\\Users\\USER\\source\\repos\\Homework.ITAcademy3\\UI\\Surnames.json";
@@ -27,10 +27,7 @@ namespace Homework.ITAcademy3.UI
                 var human = new Human(names[i], surnames[rnd.Next(0, surnames.Count)]);
                 people.Add(human);
             }
-            foreach (var i in people)
-            {
-                Console.WriteLine(i);
-            }
+            return people;
         }
     }
 }
