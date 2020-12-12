@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Homework.ITAcademy3.Peoples;
 using Newtonsoft.Json;
 
 namespace Homework.ITAcademy3.UI
@@ -17,18 +16,10 @@ namespace Homework.ITAcademy3.UI
             var content1 = File.ReadAllText(pathFN);
             var content2 = File.ReadAllText(pathLN);
 
-            var people = new List<Human>();
-
             var names = JsonConvert.DeserializeObject<List<string>>(content1);
             var surnames = JsonConvert.DeserializeObject<List<string>>(content2);
 
-            for (int i = 0; i < names.Count; i++)
-            {
-                var rnd = new Random();
-                var human = new Human(names[i], surnames[rnd.Next(0, surnames.Count)]);
-                people.Add(human);
-            }
-            return people;
+            return (from t in names let rnd = new Random() select new Human(t, surnames[rnd.Next(0, surnames.Count)])).ToList();
         }
 
         public void ShowAllContacts()
@@ -42,6 +33,7 @@ namespace Homework.ITAcademy3.UI
 
         public void Search()
         {
+            Console.WriteLine("Search by: ");
             string keyWord = null;
             try
             {
@@ -54,9 +46,41 @@ namespace Homework.ITAcademy3.UI
 
             var searchedUser = FileReader().Where(r => r.FullName.ToUpper().Contains(keyWord.ToUpper()));
 
+            var counter = 0;
             foreach (var user in searchedUser)
-                Console.WriteLine(user.FullName);
+            {
+                ++counter;
+                Console.WriteLine($"{counter}. {user.FullName}");
+            }
 
+            switch (counter)
+            {
+                case 0:
+                    Console.WriteLine("Nothing found");
+                    break;
+                case 1:
+                {
+                    Console.WriteLine("Call this contact?");
+                    var i = Convert.ToString(Console.ReadLine().ToLower());
+
+                    switch (i)
+                    {
+                        case "y":
+                            //Method Call()
+                            break;
+                        case "n":
+                            Search();
+                            break;
+                        default:
+                            Console.WriteLine("Incorrect input");
+                            break;
+                    }
+                    break;
+                }
+                default:
+
+                    break;
+            }
         }
     }
 }

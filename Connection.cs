@@ -16,20 +16,18 @@ namespace Homework.ITAcademy3
 
             if (_connectionEstablished == true)
             {
-                DateTime conversationStart = DateTime.Now;
+                var conversationStart = DateTime.Now;
                 //waiting end conversation
                 DateTime conversationEnds = DateTime.Now;
-                TimeSpan durationOfConversation = conversationEnds - conversationStart;
+                var durationOfConversation = conversationEnds - conversationStart;
                 return durationOfConversation.TotalMinutes;
             }
             else
             {
-
                 _connectionEstablished = false;
                 Console.WriteLine("The subscriber is busy, call back later.");
                 return 0;
             }
         }
-
     }
 }

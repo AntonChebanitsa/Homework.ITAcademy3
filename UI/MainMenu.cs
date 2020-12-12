@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq.Expressions;
-using Homework.ITAcademy3.Peoples;
 
 namespace Homework.ITAcademy3.UI
 {
@@ -47,14 +47,13 @@ namespace Homework.ITAcademy3.UI
                 case 4:
                     break;
                 case 0:
+                    Environment.Exit(0);
                     break;
-
                 default:
                     Console.WriteLine("Wrong input. Try again");
                     Start();
                     break;
             }
-
         }
     }
 }

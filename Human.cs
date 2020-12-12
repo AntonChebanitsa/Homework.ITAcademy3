@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Homework.ITAcademy3.Peoples
+﻿namespace Homework.ITAcademy3
 {
     public class Human
     {
@@ -14,7 +10,7 @@ namespace Homework.ITAcademy3.Peoples
         {
             Name = name;
             Surname = surname;
-            FullName = $"{name} {surname}";
+            FullName = $"{surname} {name}";
         }
 
         public override string ToString()

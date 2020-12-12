@@ -10,12 +10,11 @@ namespace Homework.ITAcademy3
 
         public void ConcludeANewContract()
         {
-            Terminal Ter = new Terminal();
+            var Ter = new Terminal();
 
             var sub = new Subscriber("asdasd", Ter.NumberGuid, "asdasd");
 
             Contracts.Add(sub);
-
         }
     }
 }

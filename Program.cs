@@ -10,10 +10,6 @@ namespace Homework.ITAcademy3
             var mm= new MainMenu();
             mm.Start();
 
-            //foreach (var sub in com.Contracts)
-            //{
-            //    Console.WriteLine($"{sub.Name},  {sub.Terminal}");
-            //}
         }
     }
 }
