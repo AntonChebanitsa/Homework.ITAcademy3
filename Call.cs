@@ -5,6 +5,11 @@ namespace Homework.ITAcademy3
 {
     public class Call
     {
+        public delegate void MethodContainer();
+
+        public event MethodContainer StartCall;
+        public event MethodContainer StopCall;
+
         public void Calling(Subscriber sub)
         {
             var number = sub.Terminal.PhoneNumber;
@@ -12,48 +17,36 @@ namespace Homework.ITAcademy3
             {
                 Console.WriteLine("The subscriber is busy, call back later.");
             }
-            else if (sub.IsAvailable==false)
+            else if (sub.IsAvailable == false)
             {
                 Console.WriteLine("The subscriber is not available, try again later.");
             }
-            else if (sub.IsBusy == false && sub.IsAvailable == true)
+            Console.WriteLine("Calling...");
+            for (int i = 0; i < 11; i++)
             {
-                Console.WriteLine("Calling...");
-                for (int i = 0; i < 11; i++)
-                {
-                    Console.Beep(425, 2000); // dont working on my pc. idk why
-                    // Need to add event here
-                    if (i != 10) continue;
-                    Console.WriteLine("The subscriber is busy, call back later.");
-                    
-                }
-                DurationOfConversation();
-            }
-            else
-            {
-                Console.WriteLine("Unknown connection error. Closing app");
-                Environment.Exit(0);
-            }
+                Console.Beep(425, 2000); // dont working on my pc. idk why
 
+                //MethodContainer += DurationOfConversation();
+                //Start();
+                
+                
+                // Need to add event here
+                if (i != 10) continue;
+                Console.WriteLine("The subscriber is busy, call back later.");
+            }
+            DurationOfConversation();
         }
         public double DurationOfConversation()
         {
-            bool connectionEstablished = false;
-            //waiting to be picked up
+            var a = Stopwatch.StartNew();
+            //waiting end conversation
+            a.Stop();
+            return a.Elapsed.TotalMinutes;
+        }
 
-            if (connectionEstablished == true)
-            {
-                var a = Stopwatch.StartNew();
-                //waiting end conversation
-                a.Stop();
-                return a.Elapsed.TotalMinutes;
-            }
-            else
-            {
-                connectionEstablished = false;
-                //Console.WriteLine("The subscriber is busy, call back later.");
-                return 0;
-            }
+        public double CallCostCalculator(double duration, double minuteCost)
+        {
+            return duration * minuteCost;
         }
     }
 }
