@@ -12,7 +12,7 @@ namespace Homework.ITAcademy3.UI
 
         public List<Human> FileReader()
         {
-            const string pathFN = "C:\\Users\\USER\\source\\repos\\Homework.ITAcademy3\\UI\\FirstnamesWO_LINQ.json";
+            const string pathFN = "C:\\Users\\USER\\source\\repos\\Homework.ITAcademy3\\UI\\Firstnames10.json";
             const string pathLN = "C:\\Users\\USER\\source\\repos\\Homework.ITAcademy3\\UI\\Surnames.json";
 
             var content1 = File.ReadAllText(pathFN);
@@ -29,7 +29,7 @@ namespace Homework.ITAcademy3.UI
             var subs = listHumans.Select(x=>new Subscriber(x.Name,x.Surname,new Terminal())).ToList();
             return subs;
         }
-
+        
         public void ShowAllContacts()
         {
             var sortedUsers = FileReader().OrderBy(u => u.Name).ToList();

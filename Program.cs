@@ -7,8 +7,7 @@ namespace Homework.ITAcademy3
     {
         static void Main(string[] args)
         {
-            var mm= new MainMenu();
-            mm.Start();
+            MainMenu.Start();
 
         }
     }

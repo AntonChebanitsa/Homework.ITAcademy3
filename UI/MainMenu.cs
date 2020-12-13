@@ -5,9 +5,9 @@ using System.Linq.Expressions;
 
 namespace Homework.ITAcademy3.UI
 {
-    public class MainMenu
+    public static class MainMenu
     {
-        public void Start()
+        public static void Start()
         {
             Console.WriteLine("Welcome to the main menu");
             Console.WriteLine("Enter the corresponding request number");
@@ -41,8 +41,7 @@ namespace Homework.ITAcademy3.UI
                     contacts.Search();
                     break;
                 case 3:
-                    var balanceInfo = new Information();
-                    balanceInfo.CheckInformation();
+                    Information.CheckInformation();
                     break;
                 case 4:
                     break;
