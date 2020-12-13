@@ -74,7 +74,9 @@ namespace Homework.ITAcademy3.UI
                         switch (i)
                         {
                             case "y":
-                                Console.WriteLine("Calling...");
+                                
+                                var call= new Call();
+                                call.Calling(dictionary[counter]);
                                 //Method Call()
                                 break;
                             case "n":
@@ -104,9 +106,8 @@ namespace Homework.ITAcademy3.UI
                                 {
                                     Console.WriteLine("No such contact");
                                 }
-
-                                Console.WriteLine("Calling...");
-                                //dictionary[x].
+                                var call = new Call();
+                                call.Calling(dictionary[x]);
                                 break;
                             case "n":
                                 Search();
