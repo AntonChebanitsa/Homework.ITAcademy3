@@ -59,27 +59,59 @@ namespace Homework.ITAcademy3.UI
                     Console.WriteLine("Nothing found");
                     break;
                 case 1:
-                {
-                    Console.WriteLine("Call this contact?");
-                    var i = Convert.ToString(Console.ReadLine().ToLower());
-
-                    switch (i)
                     {
-                        case "y":
-                            //Method Call()
-                            break;
-                        case "n":
-                            Search();
-                            break;
-                        default:
-                            Console.WriteLine("Incorrect input");
-                            break;
-                    }
-                    break;
-                }
-                default:
+                        Console.WriteLine($"Call this contact? press \"y\" or \"n\"");
+                        var i = Convert.ToString(Console.ReadLine().ToLower());
 
-                    break;
+                        switch (i)
+                        {
+                            case "y":
+                                //Method Call()
+                                break;
+                            case "n":
+                                Search();
+                                break;
+                            default:
+                                Console.WriteLine("Incorrect input");
+                                break;
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine($"Call someone? press \"y\" or \"n\"");
+                        var i = Convert.ToString(Console.ReadLine().ToLower());
+
+                        switch (i)
+                        {
+                            case "y":
+                                var x = 0;
+                                Console.WriteLine("Select someone by number");
+                                try
+                                {
+                                    x = Convert.ToInt32(Console.ReadLine());
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("No such contact");
+                                }
+                                foreach (var number in searchedUser)
+                                {
+                                    if (counter == x)
+                                    {
+                                        Console.WriteLine("Calling");
+                                    }
+                                }
+                                break;
+                            case "n":
+                                Search();
+                                break;
+                            default:
+                                Console.WriteLine("Incorrect input");
+                                break;
+                        }
+                        break;
+                    }
             }
         }
     }
