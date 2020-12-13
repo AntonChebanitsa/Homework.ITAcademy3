@@ -19,25 +19,29 @@ namespace Homework.ITAcademy3
             else if (sub.IsBusy == false && sub.IsAvailable == true)
             {
                 Console.WriteLine("Calling...");
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 11; i++)
                 {
                     Console.Beep(425, 2000); // dont working on my pc. idk why
                     // Need to add event here
+                    if (i != 10) continue;
+                    Console.WriteLine("The subscriber is busy, call back later.");
+                    
                 }
                 DurationOfConversation();
             }
             else
             {
-                Console.WriteLine("Unknown connection error");
+                Console.WriteLine("Unknown connection error. Closing app");
+                Environment.Exit(0);
             }
 
         }
         public double DurationOfConversation()
         {
-            bool _connectionEstablished = false;
+            bool connectionEstablished = false;
             //waiting to be picked up
 
-            if (_connectionEstablished == true)
+            if (connectionEstablished == true)
             {
                 var a = Stopwatch.StartNew();
                 //waiting end conversation
@@ -46,8 +50,8 @@ namespace Homework.ITAcademy3
             }
             else
             {
-                _connectionEstablished = false;
-                Console.WriteLine("The subscriber is busy, call back later.");
+                connectionEstablished = false;
+                //Console.WriteLine("The subscriber is busy, call back later.");
                 return 0;
             }
         }
