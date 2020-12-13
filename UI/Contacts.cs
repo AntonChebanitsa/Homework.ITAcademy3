@@ -22,6 +22,12 @@ namespace Homework.ITAcademy3.UI
             return (from t in names let rnd = new Random() select new Human(t, surnames[rnd.Next(0, surnames.Count)])).ToList();
         }
 
+        public List<Subscriber> HumanToSub(List<Human> listHumans)
+        {
+            var subs = listHumans.Select(x=>new Subscriber(x.Name,x.Surname,new Terminal())).ToList();
+            return subs;
+        }
+
         public void ShowAllContacts()
         {
             var sortedUsers = FileReader().OrderBy(u => u.Name);
@@ -44,12 +50,14 @@ namespace Homework.ITAcademy3.UI
                 Console.WriteLine("Incorrect input");
             }
 
-            var searchedUser = FileReader().Where(r => r.FullName.ToUpper().Contains(keyWord.ToUpper()));
-
+            var searchedUsers = FileReader().Where(r => r.FullName.ToUpper().Contains(keyWord.ToUpper())).ToList();
+            var subs=HumanToSub(searchedUsers);
+            var dictionary = new Dictionary<int, Subscriber>();
             var counter = 0;
-            foreach (var user in searchedUser)
+            foreach (var user in subs)
             {
                 ++counter;
+                dictionary.Add(counter, user);
                 Console.WriteLine($"{counter}. {user.FullName}");
             }
 
@@ -66,6 +74,7 @@ namespace Homework.ITAcademy3.UI
                         switch (i)
                         {
                             case "y":
+                                Console.WriteLine("Calling...");
                                 //Method Call()
                                 break;
                             case "n":
@@ -95,13 +104,9 @@ namespace Homework.ITAcademy3.UI
                                 {
                                     Console.WriteLine("No such contact");
                                 }
-                                foreach (var number in searchedUser)
-                                {
-                                    if (counter == x)
-                                    {
-                                        Console.WriteLine("Calling");
-                                    }
-                                }
+
+                                Console.WriteLine("Calling...");
+                                //dictionary[x].
                                 break;
                             case "n":
                                 Search();

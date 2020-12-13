@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Homework.ITAcademy3
 {
@@ -16,11 +17,10 @@ namespace Homework.ITAcademy3
 
             if (_connectionEstablished == true)
             {
-                var conversationStart = DateTime.Now;
+                var a = Stopwatch.StartNew();
                 //waiting end conversation
-                DateTime conversationEnds = DateTime.Now;
-                var durationOfConversation = conversationEnds - conversationStart;
-                return durationOfConversation.TotalMinutes;
+                a.Stop();
+                return a.Elapsed.TotalMinutes;
             }
             else
             {
