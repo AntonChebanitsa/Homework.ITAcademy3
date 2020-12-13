@@ -8,6 +8,8 @@ namespace Homework.ITAcademy3.UI
 {
     public class Contacts
     {
+        Dictionary<int, Subscriber> dictionary = new Dictionary<int, Subscriber>();
+
         public List<Human> FileReader()
         {
             const string pathFN = "C:\\Users\\USER\\source\\repos\\Homework.ITAcademy3\\UI\\FirstnamesWO_LINQ.json";
@@ -30,13 +32,28 @@ namespace Homework.ITAcademy3.UI
 
         public void ShowAllContacts()
         {
-            var sortedUsers = FileReader().OrderBy(u => u.Name);
-            foreach (var i in sortedUsers)
+            var sortedUsers = FileReader().OrderBy(u => u.Name).ToList();
+            int counter = 0;
+            var subs = HumanToSub(sortedUsers);
+            foreach (var user in subs)
             {
-                Console.WriteLine(i);
+                ++counter;
+                dictionary.Add(counter, user);
+                Console.WriteLine($"{counter}. {user.FullName}");
             }
+            var x = 0;
+            Console.WriteLine("Select someone by number");
+            try
+            {
+                x = Convert.ToInt32(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("No such contact");
+            }
+            var call = new Call();
+            call.Calling(dictionary[x]);
         }
-
         public void Search()
         {
             Console.WriteLine("Search by: ");
@@ -52,7 +69,7 @@ namespace Homework.ITAcademy3.UI
 
             var searchedUsers = FileReader().Where(r => r.FullName.ToUpper().Contains(keyWord.ToUpper())).ToList();
             var subs=HumanToSub(searchedUsers);
-            var dictionary = new Dictionary<int, Subscriber>();
+            
             var counter = 0;
             foreach (var user in subs)
             {
@@ -74,7 +91,6 @@ namespace Homework.ITAcademy3.UI
                         switch (i)
                         {
                             case "y":
-                                
                                 var call= new Call();
                                 call.Calling(dictionary[counter]);
                                 //Method Call()
