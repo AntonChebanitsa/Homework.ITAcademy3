@@ -27,7 +27,7 @@ namespace Homework.ITAcademy3.UI
             Console.WriteLine($"My number is: {myNumber.NumberGuid}");
 
             Console.WriteLine("1. Change tariff plan\n" +
-                              "0. Back");
+                              "0. Exit");
             var x = 0;
             try
             {
@@ -38,7 +38,7 @@ namespace Homework.ITAcademy3.UI
                         TariffPlan.ChangeTariffPlan();
                         break;
                     case 0:
-                        MainMenu.Start();
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Incorrect input");

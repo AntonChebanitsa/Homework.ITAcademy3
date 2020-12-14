@@ -13,5 +13,19 @@ namespace Homework.ITAcademy3
         {
             Terminal = terminal;
         }
+        public void ConnectOrDisconnect()
+        {
+            if (IsAvailable == true)
+            {
+                IsAvailable = false;
+                Console.WriteLine("Disconnected");
+            }
+            else
+            {
+                IsAvailable = true;
+                Console.WriteLine("Connected");
+            }
+
+        }
     }
 }

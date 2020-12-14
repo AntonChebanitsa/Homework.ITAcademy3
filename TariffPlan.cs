@@ -21,7 +21,7 @@ namespace Homework.ITAcademy3
                                   "1. Minimum\n" +
                                   "2. Middle\n" +
                                   "3. Premium\n" +
-                                  "0. Back");
+                                  "0. Exit");
                 var x = 0;
                 try
                 {
@@ -44,7 +44,7 @@ namespace Homework.ITAcademy3
                         Premium(days);
                         break;
                     case 0:
-                        Information.CheckInformation();
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Incorrect input");

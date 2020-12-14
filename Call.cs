@@ -49,5 +49,6 @@ namespace Homework.ITAcademy3
         {
             return duration * minuteCost;
         }
+
     }
 }
