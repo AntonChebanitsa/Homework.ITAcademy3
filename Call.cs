@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Homework.ITAcademy3
 {
@@ -25,12 +26,12 @@ namespace Homework.ITAcademy3
             for (int i = 0; i < 11; i++)
             {
                 Console.Beep(425, 2000); // dont working on my pc. idk why
+                Thread.Sleep(2000);
 
                 //MethodContainer += DurationOfConversation();
                 //Start();
-                
-                
                 // Need to add event here
+
                 if (i != 10) continue;
                 Console.WriteLine("The subscriber is busy, call back later.");
             }

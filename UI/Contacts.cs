@@ -42,17 +42,18 @@ namespace Homework.ITAcademy3.UI
                 Console.WriteLine($"{counter}. {user.FullName}");
             }
             var x = 0;
-            Console.WriteLine("Select someone by number");
+            Console.WriteLine("Select someone by number to call");
             try
             {
                 x = Convert.ToInt32(Console.ReadLine());
+                var call = new Call();
+                call.Calling(dictionary[x]);
             }
             catch
             {
                 Console.WriteLine("No such contact");
             }
-            var call = new Call();
-            call.Calling(dictionary[x]);
+           
         }
         public void Search()
         {
@@ -61,79 +62,78 @@ namespace Homework.ITAcademy3.UI
             try
             {
                 keyWord = Convert.ToString(Console.ReadLine());
+                var searchedUsers = FileReader().Where(r => r.FullName.ToUpper().Contains(keyWord.ToUpper())).ToList();
+                var subs = HumanToSub(searchedUsers);
+
+                var counter = 0;
+                foreach (var user in subs)
+                {
+                    ++counter;
+                    dictionary.Add(counter, user);
+                    Console.WriteLine($"{counter}. {user.FullName}");
+                }
+
+                switch (counter)
+                {
+                    case 0:
+                        Console.WriteLine("Nothing found");
+                        break;
+                    case 1:
+                        {
+                            Console.WriteLine($"Call this contact? press \"y\" or \"n\"");
+                            var i = Convert.ToString(Console.ReadLine().ToLower());
+
+                            switch (i)
+                            {
+                                case "y":
+                                    var call = new Call();
+                                    call.Calling(dictionary[counter]);
+                                    //Method Call()
+                                    break;
+                                case "n":
+                                    Search();
+                                    break;
+                                default:
+                                    Console.WriteLine("Incorrect input");
+                                    break;
+                            }
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine($"Call someone? press \"y\" or \"n\"");
+                            var i = Convert.ToString(Console.ReadLine().ToLower());
+
+                            switch (i)
+                            {
+                                case "y":
+                                    var x = 0;
+                                    Console.WriteLine("Select someone by number");
+                                    try
+                                    {
+                                        x = Convert.ToInt32(Console.ReadLine());
+                                        var call = new Call();
+                                        call.Calling(dictionary[x]);
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine("No such contact");
+                                    }
+                                    break;
+                                case "n":
+                                    Search();
+                                    break;
+                                default:
+                                    Console.WriteLine("Incorrect input");
+                                    break;
+                            }
+                            break;
+                        }
+                }
             }
             catch
             {
                 Console.WriteLine("Incorrect input");
-            }
-
-            var searchedUsers = FileReader().Where(r => r.FullName.ToUpper().Contains(keyWord.ToUpper())).ToList();
-            var subs=HumanToSub(searchedUsers);
-            
-            var counter = 0;
-            foreach (var user in subs)
-            {
-                ++counter;
-                dictionary.Add(counter, user);
-                Console.WriteLine($"{counter}. {user.FullName}");
-            }
-
-            switch (counter)
-            {
-                case 0:
-                    Console.WriteLine("Nothing found");
-                    break;
-                case 1:
-                    {
-                        Console.WriteLine($"Call this contact? press \"y\" or \"n\"");
-                        var i = Convert.ToString(Console.ReadLine().ToLower());
-
-                        switch (i)
-                        {
-                            case "y":
-                                var call= new Call();
-                                call.Calling(dictionary[counter]);
-                                //Method Call()
-                                break;
-                            case "n":
-                                Search();
-                                break;
-                            default:
-                                Console.WriteLine("Incorrect input");
-                                break;
-                        }
-                        break;
-                    }
-                default:
-                    {
-                        Console.WriteLine($"Call someone? press \"y\" or \"n\"");
-                        var i = Convert.ToString(Console.ReadLine().ToLower());
-
-                        switch (i)
-                        {
-                            case "y":
-                                var x = 0;
-                                Console.WriteLine("Select someone by number");
-                                try
-                                {
-                                    x = Convert.ToInt32(Console.ReadLine());
-                                }
-                                catch
-                                {
-                                    Console.WriteLine("No such contact");
-                                }
-                                var call = new Call();
-                                call.Calling(dictionary[x]);
-                                break;
-                            case "n":
-                                Search();
-                                break;
-                            default:
-                                Console.WriteLine("Incorrect input");
-                                break;
-                        }
-                        break;
-                    }
             }
         }
     }
