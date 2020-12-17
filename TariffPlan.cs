@@ -5,7 +5,7 @@ namespace Homework.ITAcademy3
 {
     public static class TariffPlan
     {
-        public static double PriceForMinute { get; private set; } = 0.5;
+        public static double PriceForMinute { get; private set; } 
         public static int SubscriptionFee { get; private set; }
         public static int FreeMinutes { get; private set; }
 
@@ -17,7 +17,7 @@ namespace Homework.ITAcademy3
                 Console.WriteLine($"Changing the tariff plan is possible only after 30 days. left {30 - days} day(s)");
             else
             {
-                Console.WriteLine("Сhoose a tariff plan\n" +
+                Console.WriteLine("Select a tariff plan\n" +
                                   "1. Minimum\n" +
                                   "2. Middle\n" +
                                   "3. Premium\n" +
@@ -58,16 +58,19 @@ namespace Homework.ITAcademy3
         }
         public static void Minimum(int days)
         {
+            PriceForMinute=0.25;
             SubscriptionFee = 20;
             FreeMinutes = 50 / (days - 30);
         }
         public static void Middle(int days)
         {
+            PriceForMinute = 0.2;
             SubscriptionFee = 25;
             FreeMinutes = 125 / (days - 30);
         }
         public static void Premium(int days)
         {
+            PriceForMinute = 0.15;
             SubscriptionFee = 30;
             FreeMinutes = 250 / (days - 30);
         }
