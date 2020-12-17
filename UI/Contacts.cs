@@ -88,6 +88,7 @@ namespace Homework.ITAcademy3.UI
                                 case "y":
                                     var call = new Call();
                                     call.Calling(dictionary[counter]);
+
                                     break;
                                 case "n":
                                     Search();

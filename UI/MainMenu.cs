@@ -10,6 +10,8 @@ namespace Homework.ITAcademy3.UI
     {
         public static void Start()
         {
+            //if (subscriberMe == null)
+
             var subscriberMe = new Subscriber("Anton", "Chebanitsa", new Terminal());
 
             while (true)
@@ -66,6 +68,8 @@ namespace Homework.ITAcademy3.UI
                             Information.CheckInformation();
                             break;
                         case 4:
+                            var history= new History();
+                            history.ShowHistory();
                             break;
                         case 9:
                             subscriberMe.ConnectOrDisconnect();
